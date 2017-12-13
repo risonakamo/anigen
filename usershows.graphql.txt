@@ -1,0 +1,52 @@
+queries for all shows in a given user's lists
+
+string username must exist
+
+{
+  MediaListCollection(
+    userName:"${username}",
+    type:ANIME
+  )
+  {
+    statusLists
+    {
+      media
+      {
+        title
+        {
+          romaji
+        },
+        startDate
+        {
+         	year
+        },
+        season,
+        coverImage
+        {
+          large
+        }
+      }
+    },
+    customLists
+    {
+      media
+      {
+        title
+        {
+          romaji
+        },
+        startDate
+        {
+         	year
+        },
+        season,
+        coverImage
+        {
+          large
+        }
+      }
+    }
+  }
+}
+
+`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year},season,coverImage{large}}},customLists{media{title{romaji},startDate{year},season,coverImage{large}}}}}`
