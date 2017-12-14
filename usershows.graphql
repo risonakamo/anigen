@@ -17,13 +17,16 @@
         },
         startDate
         {
-         	year
+         	year,
+          month,
+          day
         },
         season,
         coverImage
         {
           large
-        }
+        },
+        genres
       }
     },
     customLists
@@ -36,16 +39,19 @@
         },
         startDate
         {
-         	year
+         	year,
+          month,
+          day
         },
         season,
         coverImage
         {
           large
-        }
+        },
+        genres
       }
     }
   }
 }
 
-{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year},season,coverImage{large}}},customLists{media{title{romaji},startDate{year},season,coverImage{large}}}}}
+{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}
