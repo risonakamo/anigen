@@ -4,10 +4,10 @@ function main()
 {
     var username="risona";
 
-    // alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
-    // (d)=>{
-    //     console.log(seasonYearFilter(d,2018,"WINTER"));
-    // });
+    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
+    (d)=>{
+        console.log(seasonYearFilter(d,2018,"WINTER"));
+    });
 }
 
 function alistReq(query,callback)
@@ -64,4 +64,23 @@ function shotTest()
     }).then((c)=>{
         document.querySelector(".output").appendChild(c);
     });
+}
+
+function genShowBox(data)
+{
+    var genreString="";
+    var ta=data.genres;
+
+    for (var x=0,l=ta.length;x<l;x++)
+    {
+        genres.push(`<span>ta[x]</span> `);
+    }
+
+    var title=data.title.romaji;
+
+    var startDate=data.startDate;
+    var dayday=new Date(startDate.year,startDate.month-1,startDate.day).getDay();
+
+    //see showbox-string.html for expanded
+    return `<div class="showbox"><img src="${data.coverImage.large}"><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`;
 }
