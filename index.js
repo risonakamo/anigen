@@ -4,10 +4,10 @@ function main()
 {
     var username="risona";
 
-    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
-    (d)=>{
-        console.log(seasonYearFilter(d,2018,"WINTER"));
-    });
+    // alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
+    // (d)=>{
+    //     console.log(seasonYearFilter(d,2018,"WINTER"));
+    // });
 }
 
 function alistReq(query,callback)
@@ -55,4 +55,13 @@ function seasonYearFilter(data,year,season)
     }
 
     return res;
+}
+
+function shotTest()
+{
+    html2canvas(document.querySelector(".showboxes"),{
+        allowTaint:true
+    }).then((c)=>{
+        document.querySelector(".output").appendChild(c);
+    });
 }

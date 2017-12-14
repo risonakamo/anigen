@@ -1,6 +1,75 @@
 @charset "UTF-8";
 
+@font-face
+{
+    font-family: "nscj-reg";
+    src: url("nscj-reg.otf");
+}
+
+@font-face
+{
+    font-family: "nscj-bold";
+    src: url("nscj-bold.otf");
+}
+
 body
 {
     margin: 0;
+    background-color: #594df6;
+    font-family: "nscj-reg";
+    color: white;
+}
+
+p
+{
+    margin: 0;
+}
+
+.showboxes
+{
+    background-color: #594df6;
+}
+
+.text
+{
+    margin-top: -4px;
+    padding-right: 2px;
+    text-align: right;
+}
+
+.showbox
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 230px;
+    padding: 20px;
+}
+
+.showbox .title
+{
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 17px;
+    margin: 3px 0 3px 0;
+    font-family: "nscj-bold";
+}
+
+.showbox .info
+{
+    font-size: 10px;
+}
+
+.showbox .genres span
+{
+    background-color: white;
+    color: #594df6;
+    border-radius: 7px;
+    padding: 0 8px 0 8px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.showbox img
+{
+    border-radius: 4px;
 }
