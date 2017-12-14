@@ -3,10 +3,13 @@ window.onload=main;
 function main()
 {
     var username="risona";
+    var e_showboxes=document.querySelector(".showboxes");
 
     alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
     (d)=>{
-        console.log(seasonYearFilter(d,2018,"WINTER"));
+        var data=seasonYearFilter(d,2018,"WINTER");
+        console.log(data);
+        e_showboxes.insertAdjacentHTML("beforeend",genShowBox(data[0]));
     });
 }
 
