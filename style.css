@@ -42,7 +42,7 @@ p
     display: inline-block;
     vertical-align: top;
     width: 230px;
-    padding: 20px;
+    padding: 5px 20px 0 20px;
 }
 
 .showbox .title
@@ -72,4 +72,22 @@ p
 .showbox img
 {
     border-radius: 4px;
+}
+
+.daybox
+{
+    display: table;
+    padding: 10px 0 10px 0;
+}
+
+.day-label
+{
+    display: table-cell;
+    height: 100%;
+    width: 30px;
+    background-color: white;
+    font-family: "nscj-bold";
+    color: #594df6;
+    vertical-align: middle;
+    text-align: center;
 }
