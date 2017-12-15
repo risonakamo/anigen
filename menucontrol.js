@@ -13,7 +13,9 @@ class _menuControl
         this.submit=block1.querySelector(".submit");
 
         this.showboxZone=document.querySelector(".showboxes");
-        this.showboxZoneControl=document.querySelector(".wide-control");
+        var block2=document.querySelector(".output-control");
+        this.showboxZoneControl=block2.querySelector(".wide-control");
+        this.showboxHeight=block2.querySelector(".height-control");
 
         this.defaultInputs();
         this.initButtons();
@@ -109,6 +111,7 @@ class _menuControl
 
             this.showboxZoneControl.value=controlValue;
             this.showboxZone.style.width=e.currentTarget.value+"px";
+            this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
         });
     }
 
@@ -156,5 +159,6 @@ class _menuControl
     getZoneWide()
     {
         this.showboxZoneControl.value=this.showboxZone.offsetWidth;
+        this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
     }
 }
