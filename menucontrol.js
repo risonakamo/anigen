@@ -25,7 +25,7 @@ class _menuControl
 
         if (month==11 || month==0 || month==1)
         {
-            this.seasonButtons[2].classList.add("selected");
+            this.seasonButtons[3].classList.add("selected");
         }
 
         else if (month>=2 && month<=4)
@@ -73,12 +73,19 @@ class _menuControl
         }
 
         this.submit.addEventListener("click",()=>{
-            this.getResult();
+            var result=this.getResult();
+
+            if (result)
+            {
+                loadData(result.username,result.year,result.season,result.language);
+            }
         });
     }
 
     getResult()
     {
+        var year=this.yearEntry.value;
+
         var seasonChoice;
         var languageChoice;
 
@@ -98,6 +105,11 @@ class _menuControl
             }
         }
 
-        console.log(this.userEntry.value,this.yearEntry.value,seasonChoice,languageChoice);
+        return {
+            username:this.userEntry.value,
+            year:this.yearEntry.value,
+            season:["SPRING","SUMMER","FALL","WINTER"][seasonChoice],
+            language:languageChoice
+        };
     }
 }

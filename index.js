@@ -5,12 +5,13 @@ var menucontrol;
 function main()
 {
     menucontrol=new _menuControl;
-    var username="Risona";
-    var e_showboxes=document.querySelector(".showboxes");
+}
 
+function loadData(username,year,season,language)
+{
     alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
     (d)=>{
-        var data=seasonYearFilter(d,2017,"FALL");
+        var data=seasonYearFilter(d,year,season);
         genShowBoxes(data);
     });
 }
@@ -108,6 +109,7 @@ function wrapdayBox(showboxesString,dayString)
     return `<div class="daybox"><div class="day-label">${dayString}</div>${showboxesString}</div>`;
 }
 
+//main gen function
 //give it array of show objects
 function genShowBoxes(data)
 {
@@ -116,6 +118,7 @@ function genShowBoxes(data)
     var daybox;
 
     var e_showboxes=document.querySelector(".showboxes");
+    e_showboxes.innerHTML="";
 
     for (var x=0,l=data.length;x<l;x++)
     {
