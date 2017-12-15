@@ -12,6 +12,9 @@ class _menuControl
 
         this.submit=block1.querySelector(".submit");
 
+        this.showboxZone=document.querySelector(".showboxes");
+        this.showboxZoneControl=document.querySelector(".wide-control");
+
         this.defaultInputs();
         this.initButtons();
     }
@@ -73,12 +76,39 @@ class _menuControl
         }
 
         this.submit.addEventListener("click",()=>{
-            var result=this.getResult();
+            this.sendResult();
+        });
 
-            if (result)
+        this.userEntry.addEventListener("keydown",(e)=>{
+            if (e.key=="Enter")
             {
-                loadData(result.username,result.year,result.season,result.language);
+                this.sendResult();
             }
+        });
+
+        var controlValue;
+        this.showboxZoneControl.addEventListener("wheel",(e)=>{
+            e.preventDefault();
+
+            if (!this.showboxZoneControl.value)
+            {
+                return;
+            }
+
+            controlValue=parseInt(this.showboxZoneControl.value);
+
+            if (e.deltaY<0)
+            {
+                controlValue+=20;
+            }
+
+            else
+            {
+                controlValue-=20;
+            }
+
+            this.showboxZoneControl.value=controlValue;
+            this.showboxZone.style.width=e.currentTarget.value+"px";
         });
     }
 
@@ -111,5 +141,20 @@ class _menuControl
             season:["SPRING","SUMMER","FALL","WINTER"][seasonChoice],
             language:languageChoice
         };
+    }
+
+    sendResult()
+    {
+        var result=this.getResult();
+
+        if (result)
+        {
+            loadData(result.username,result.year,result.season,result.language);
+        }
+    }
+
+    getZoneWide()
+    {
+        this.showboxZoneControl.value=this.showboxZone.offsetWidth;
     }
 }

@@ -23,6 +23,7 @@ function loadData(username,year,season,language=0)
     (d)=>{
         var data=seasonYearFilter(d,year,season,language);
         genShowBoxes(data);
+        menucontrol.getZoneWide();
     });
 }
 

@@ -1,7 +1,10 @@
 void main();
 
-void alistReq(string query,function callback(object));
-[showObject,..] seasonYearFilter(object data,int year,string season);
+void loadData(); //uses alistreq to do work
+
+/*-- alist data helpers --*/
+void alistReq(string query,function callback(object)); //make a general alistreq
+[showObject,..] seasonYearFilter(object data,int year,string season); //filter an alistreq
 
 void genShowBoxes([showObject,..] data);
 
