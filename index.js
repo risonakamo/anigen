@@ -7,11 +7,21 @@ function main()
     menucontrol=new _menuControl;
 }
 
-function loadData(username,year,season,language)
+function loadData(username,year,season,language=0)
 {
-    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
+    if (language)
+    {
+        language="romaji";
+    }
+
+    else
+    {
+        language="native";
+    }
+
+    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
     (d)=>{
-        var data=seasonYearFilter(d,year,season);
+        var data=seasonYearFilter(d,year,season,language);
         genShowBoxes(data);
     });
 }
@@ -34,7 +44,7 @@ function alistReq(query,callback)
 }
 
 //give it direct data from alistreq
-function seasonYearFilter(data,year,season)
+function seasonYearFilter(data,year,season,language)
 {
     data=data.data.MediaListCollection;
     var res=[];
@@ -52,9 +62,10 @@ function seasonYearFilter(data,year,season)
             for (var z=0,l=currentArray.length;z<l;z++)
             {
                 currentShow=currentArray[z].media;
-                if (currentShow.season==season && currentShow.startDate.year==year && !seen.has(currentShow.title.native))
+                currentShow.title=currentShow.title[language];
+                if (currentShow.season==season && currentShow.startDate.year==year && !seen.has(currentShow.title))
                 {
-                    seen.add(currentShow.title.native);
+                    seen.add(currentShow.title);
                     res.push(currentShow);
                 }
             }
@@ -93,7 +104,7 @@ function genShowBox(data)
 
     genreString+=`<span class="format">${formatString}</span>`;
 
-    var title=data.title.native;
+    var title=data.title;
 
     var startDate=data.startDate;
 
