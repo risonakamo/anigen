@@ -114,6 +114,7 @@ p
 .menu-block
 {
     display: inline-block;
+    vertical-align: top;
     width: 400px;
     height: 400px;
 }
@@ -126,6 +127,14 @@ p
 .input-holder span
 {
     font-size: 21px;
+}
+
+.input-holder .title
+{
+    display: inline-block;
+    text-align: right;
+    width: 150px;
+    margin-right: 25px;
 }
 
 .white-textbox
@@ -148,13 +157,13 @@ p
 .season-pick
 {
     display: inline-block;
+    user-select: none;
 }
 
 .input-holder .season-pick span
 {
     padding: 3px 9px 4px 9px;
     cursor: pointer;
-    user-select: none;
 }
 
 .season-pick span.selected
@@ -167,4 +176,19 @@ p
 .season-pick.language span.selected
 {
     border-radius: 20px;
+}
+
+.submit
+{
+    display: inline-block;
+    background-color: #1affaf;
+    color: #594df6;
+    padding: 5px 50px 5px 50px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit:hover
+{
+    opacity: .8;
 }
