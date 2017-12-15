@@ -59,6 +59,11 @@ p
     font-size: 10px;
 }
 
+.showbox .genres
+{
+    line-height: 17px;
+}
+
 .showbox .genres span
 {
     background-color: white;

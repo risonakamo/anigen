@@ -5,11 +5,10 @@ function main()
     var username="risona";
     var e_showboxes=document.querySelector(".showboxes");
 
-    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}`,
+    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}}}}`,
     (d)=>{
         var data=seasonYearFilter(d,2018,"WINTER");
-        console.log(data);
-        e_showboxes.insertAdjacentHTML("beforeend",genShowBox(data[0]));
+        genShowBoxes(data);
     });
 }
 
@@ -48,9 +47,9 @@ function seasonYearFilter(data,year,season)
             for (var z=0,l=currentArray.length;z<l;z++)
             {
                 currentShow=currentArray[z].media;
-                if (currentShow.season==season && currentShow.startDate.year==year && !seen.has(currentShow.title.romaji))
+                if (currentShow.season==season && currentShow.startDate.year==year && !seen.has(currentShow.title.native))
                 {
-                    seen.add(currentShow.title.romaji);
+                    seen.add(currentShow.title.native);
                     res.push(currentShow);
                 }
             }
@@ -69,21 +68,52 @@ function shotTest()
     });
 }
 
+//give it single show object
 function genShowBox(data)
 {
     var genreString="";
-    var ta=data.genres;
+    var genres=data.genres;
 
-    for (var x=0,l=ta.length;x<l;x++)
+    for (var x=0,l=genres.length;x<l;x++)
     {
-        genres.push(`<span>ta[x]</span> `);
+        genreString+=`<span>${genres[x]}</span> `;
     }
 
-    var title=data.title.romaji;
+    var title=data.title.native;
 
     var startDate=data.startDate;
-    var dayday=new Date(startDate.year,startDate.month-1,startDate.day).getDay();
 
     //see showbox-string.html for expanded
-    return `<div class="showbox"><img src="${data.coverImage.large}"><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`;
+    return [`<div class="showbox"><img src="${data.coverImage.large}"><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
+        new Date(startDate.year,startDate.month-1,startDate.day).getDay()];
+}
+
+//give it full showboxes html and actual day as a string
+function wrapdayBox(showboxesString,dayString)
+{
+    return `<div class="daybox"><div class="day-label">${dayString}</div>${showboxesString}</div>`;
+}
+
+//give it array of show objects
+function genShowBoxes(data)
+{
+    var dayString=["日","月","火","水","木","金","土"];
+    var days=["","","","","","",""];
+    var daybox;
+
+    var e_showboxes=document.querySelector(".showboxes");
+
+    for (var x=0,l=data.length;x<l;x++)
+    {
+        daybox=genShowBox(data[x]);
+        days[daybox[1]]+=daybox[0];
+    }
+
+    for (var x=0;x<7;x++)
+    {
+        if (days[x])
+        {
+            e_showboxes.insertAdjacentHTML("beforeend",wrapdayBox(days[x],dayString[x]));
+        }
+    }
 }
