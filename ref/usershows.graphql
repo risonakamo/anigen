@@ -13,7 +13,7 @@
       {
         title
         {
-          romaji
+          native
         },
         startDate
         {
@@ -26,7 +26,8 @@
         {
           large
         },
-        genres
+        genres,
+        format
       }
     },
     customLists
@@ -35,7 +36,7 @@
       {
         title
         {
-          romaji
+          native
         },
         startDate
         {
@@ -48,10 +49,11 @@
         {
           large
         },
-        genres
+        genres,
+        format
       }
     }
   }
 }
 
-{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{romaji},startDate{year,month,day},season,coverImage{large},genres}}}}
+{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}}}}

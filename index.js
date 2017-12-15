@@ -5,7 +5,7 @@ function main()
     var username="risona";
     var e_showboxes=document.querySelector(".showboxes");
 
-    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}}}}`,
+    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
     (d)=>{
         var data=seasonYearFilter(d,2017,"FALL");
         genShowBoxes(data);
@@ -78,6 +78,15 @@ function genShowBox(data)
     {
         genreString+=`<span>${genres[x]}</span> `;
     }
+
+    var formatString=data.format;
+
+    if (formatString=="TV_SHORT")
+    {
+        formatString="SHORT";
+    }
+
+    genreString+=`<span class="format">${formatString}</span>`;
 
     var title=data.title.native;
 

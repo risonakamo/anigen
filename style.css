@@ -28,6 +28,7 @@ p
 .showboxes
 {
     background-color: #594df6;
+    margin: 20px;
 }
 
 .text
@@ -49,7 +50,7 @@ p
 {
     font-size: 18px;
     letter-spacing: 2px;
-    line-height: 17px;
+    line-height: 20px;
     margin: 3px 0 3px 0;
     font-family: "nscj-bold";
 }
@@ -74,6 +75,11 @@ p
     white-space: nowrap;
 }
 
+.showbox .genres span.format
+{
+    background-color: #f5e30d;
+}
+
 .showbox img
 {
     border-radius: 4px;
@@ -89,10 +95,12 @@ p
 {
     display: table-cell;
     height: 100%;
-    width: 30px;
+    width: 50px;
     background-color: white;
     font-family: "nscj-bold";
     color: #594df6;
     vertical-align: middle;
     text-align: center;
+    font-size: 21px;
+    border-radius: 6px;
 }
