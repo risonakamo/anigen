@@ -81,7 +81,7 @@ p
 
 .daybox
 {
-    display: table;
+    display: inline-table;
     padding: 10px 0 10px 0;
 }
 

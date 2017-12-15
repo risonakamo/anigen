@@ -7,7 +7,7 @@ function main()
 
     alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres}}}}`,
     (d)=>{
-        var data=seasonYearFilter(d,2018,"WINTER");
+        var data=seasonYearFilter(d,2017,"FALL");
         genShowBoxes(data);
     });
 }
