@@ -2,7 +2,7 @@ window.onload=main;
 
 function main()
 {
-    var username="risona";
+    var username="Risona";
     var e_showboxes=document.querySelector(".showboxes");
 
     alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{native},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
