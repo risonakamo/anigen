@@ -1,7 +1,10 @@
 window.onload=main;
 
+var menucontrol;
+
 function main()
 {
+    menucontrol=new _menuControl;
     var username="Risona";
     var e_showboxes=document.querySelector(".showboxes");
 
@@ -12,6 +15,7 @@ function main()
     });
 }
 
+//callback is data usable by seasonYearFilter()
 function alistReq(query,callback)
 {
     var r=new XMLHttpRequest();
@@ -93,6 +97,7 @@ function genShowBox(data)
     var startDate=data.startDate;
 
     //see showbox-string.html for expanded
+    //returns [the html result,day index (starts from 0)]
     return [`<div class="showbox"><img src="${data.coverImage.large}"><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
         new Date(startDate.year,startDate.month-1,startDate.day).getDay()];
 }

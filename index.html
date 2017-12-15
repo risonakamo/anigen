@@ -10,23 +10,24 @@
     <script src="dragscroll.js"></script>
     <script src="html2canvas.min.js"></script>
     <script src="index.js"></script>
+    <script src="menucontrol.js"></script>
 
   </head>
 
   <body>
     <div class="menu-top">
       <div class="menu-hold">
-        <div class="menu-block">
+        <div class="menu-block block-1">
           <div class="input-holder">
             <span class="title">ユーザーＩＤ</span>
-            <input type="text" class="white-textbox">
+            <input type="text" class="white-textbox user-id">
           </div>
 
           <div class="input-holder">
             <span class="title">季節</span>
-            <div class="season-pick">
-              <span>春</span>
-              <span class="selected">夏</span>
+            <div class="season-pick season">
+              <span value="0">春</span>
+              <span>夏</span>
               <span>秋</span>
               <span>冬</span>
             </div>
@@ -34,7 +35,7 @@
 
           <div class="input-holder">
             <span class="title">年</span>
-            <input type="number" class="white-textbox">
+            <input type="number" class="white-textbox year-box">
           </div>
 
           <div class="input-holder">
