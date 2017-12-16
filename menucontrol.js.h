@@ -2,6 +2,8 @@ class _menuControl()
 {
     _menuControl();
 
+    int loaded;
+
     /*-- left menu elements --*/
     element block1;
     element userEntry;

@@ -126,9 +126,12 @@ class _menuControl
         });
 
         this.outputZone.addEventListener("click",(e)=>{
-            this.outputZone.innerHTML="";
+            if (this.loaded)
+            {
+                this.outputZone.innerHTML="";
 
-            chartShot();
+                chartShot();
+            }
         });
     }
 
@@ -170,6 +173,7 @@ class _menuControl
 
         if (result)
         {
+            this.loaded=1;
             loadData(result.username,result.year,result.season,result.language);
             window.localStorage.setItem("lastload",JSON.stringify(result));
         }

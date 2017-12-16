@@ -11,4 +11,4 @@ void genShowBoxes([showObject,..] data);
 [string,int] genShowBox(object data);
 string wrapdayBox(string showboxesString,string dayString);
 
-void shotTest();
+void chartShot();
