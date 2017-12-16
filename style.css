@@ -231,13 +231,20 @@ p
     height: 200px;
     border: 4px dotted white;
     overflow: hidden;
-    color: rgba(255,255,255,0);
-    transition: color .2s;
     user-select: none;
     cursor: pointer;
 }
 
-.output-control .output:hover
+.output-control .output p
+{
+    font-size: 12px;
+    padding: 20px;
+    margin-top: 28%;
+    color: rgba(255,255,255,0);
+    transition: color .2s;
+}
+
+.output-control .output:hover p
 {
     color: rgba(255,255,255,1);
 }
