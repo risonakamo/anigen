@@ -27,7 +27,8 @@
           large
         },
         genres,
-        format
+        format,
+        siteUrl
       }
     },
     customLists
@@ -50,7 +51,8 @@
           large
         },
         genres,
-        format
+        format,
+        siteUrl
       }
     }
   }

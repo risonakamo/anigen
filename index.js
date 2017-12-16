@@ -19,7 +19,7 @@ function loadData(username,year,season,language=0)
         language="native";
     }
 
-    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format}},customLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format}}}}`,
+    alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format,siteUrl}},customLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format,siteUrl}}}}`,
     (d)=>{
         var data=seasonYearFilter(d,year,season,language);
         genShowBoxes(data);
@@ -111,7 +111,7 @@ function genShowBox(data)
 
     //see showbox-string.html for expanded
     //returns [the html result,day index (starts from 0)]
-    return [`<div class="showbox"><img src="${data.coverImage.large}"><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
+    return [`<div class="showbox"><a href="${data.siteUrl}"><img src="${data.coverImage.large}"></a><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
         new Date(startDate.year,startDate.month-1,startDate.day).getDay()];
 }
 
