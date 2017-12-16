@@ -23,6 +23,11 @@ class _menuControl
 
     defaultInputs()
     {
+        if (this.lastloadLoad())
+        {
+            return;
+        }
+
         var curDate=new Date();
         this.yearEntry.value=curDate.getFullYear();
 
@@ -142,6 +147,7 @@ class _menuControl
             username:this.userEntry.value,
             year:this.yearEntry.value,
             season:["SPRING","SUMMER","FALL","WINTER"][seasonChoice],
+            seasonNum:seasonChoice,
             language:languageChoice
         };
     }
@@ -153,6 +159,7 @@ class _menuControl
         if (result)
         {
             loadData(result.username,result.year,result.season,result.language);
+            window.localStorage.setItem("lastload",JSON.stringify(result));
         }
     }
 
@@ -160,5 +167,24 @@ class _menuControl
     {
         this.showboxZoneControl.value=this.showboxZone.offsetWidth;
         this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
+    }
+
+    lastloadLoad()
+    {
+        var lastload=JSON.parse(window.localStorage.getItem("lastload"));
+
+        if (!lastload)
+        {
+            return 0;
+        }
+
+        console.log(lastload);
+
+        this.userEntry.value=lastload.username;
+        this.yearEntry.value=lastload.year;
+        this.seasonButtons[lastload.seasonNum].classList.add("selected");
+        this.languageButtons[lastload.language].classList.add("selected");
+
+        return 1;
     }
 }

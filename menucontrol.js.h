@@ -15,8 +15,9 @@ class _menuControl()
     element showboxZoneControl;
 
     /*-- initialisation --*/
-    void defaultInputs();
     void initButtons();
+    void defaultInputs();
+    int lastloadLoad(); //if succeeded, returns 1
 
     /*-- result output --*/
     void sendResult(); //actually sends result to main
