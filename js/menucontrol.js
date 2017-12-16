@@ -125,6 +125,7 @@ class _menuControl
             this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
         });
 
+        //clicking on output zone
         this.outputZone.addEventListener("click",(e)=>{
             if (this.loaded)
             {

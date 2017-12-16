@@ -3,13 +3,13 @@
 @font-face
 {
     font-family: "nscj-reg";
-    src: url("nscj-reg.otf");
+    src: url("font/nscj-reg.otf");
 }
 
 @font-face
 {
     font-family: "nscj-bold";
-    src: url("nscj-bold.otf");
+    src: url("font/nscj-bold.otf");
 }
 
 body
