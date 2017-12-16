@@ -76,7 +76,7 @@ function seasonYearFilter(data,year,season,language)
     return res;
 }
 
-function shotTest()
+function chartShot()
 {
     html2canvas(document.querySelector(".showboxes"),{
         allowTaint:true

@@ -16,6 +16,7 @@ class _menuControl
         var block2=document.querySelector(".output-control");
         this.showboxZoneControl=block2.querySelector(".wide-control");
         this.showboxHeight=block2.querySelector(".height-control");
+        this.outputZone=block2.querySelector(".output");
 
         this.defaultInputs();
         this.initButtons();
@@ -56,6 +57,7 @@ class _menuControl
 
     initButtons()
     {
+        //season button selection
         for (var x=0;x<4;x++)
         {
             this.seasonButtons[x].addEventListener("click",(e)=>{
@@ -69,6 +71,7 @@ class _menuControl
             });
         }
 
+        //language selection
         for (var x=0;x<2;x++)
         {
             this.languageButtons[x].addEventListener("click",(e)=>{
@@ -82,10 +85,12 @@ class _menuControl
             });
         }
 
+        //submit button
         this.submit.addEventListener("click",()=>{
             this.sendResult();
         });
 
+        //user id field enter
         this.userEntry.addEventListener("keydown",(e)=>{
             if (e.key=="Enter")
             {
@@ -93,6 +98,7 @@ class _menuControl
             }
         });
 
+        //width control mousewheel
         var controlValue;
         this.showboxZoneControl.addEventListener("wheel",(e)=>{
             e.preventDefault();
@@ -117,6 +123,12 @@ class _menuControl
             this.showboxZoneControl.value=controlValue;
             this.showboxZone.style.width=e.currentTarget.value+"px";
             this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
+        });
+
+        this.outputZone.addEventListener("click",(e)=>{
+            this.outputZone.innerHTML="";
+
+            chartShot();
         });
     }
 
@@ -177,8 +189,6 @@ class _menuControl
         {
             return 0;
         }
-
-        console.log(lastload);
 
         this.userEntry.value=lastload.username;
         this.yearEntry.value=lastload.year;

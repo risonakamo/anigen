@@ -13,6 +13,7 @@ class _menuControl()
     /*-- show box elements --*/
     element showboxZone;
     element showboxZoneControl;
+    element outputZone;
 
     /*-- initialisation --*/
     void initButtons();
