@@ -255,6 +255,12 @@ p
     height: auto !important;
 }
 
+.output-control .output canvas.tall
+{
+    width: auto !important;
+    height: 100% !important;
+}
+
 .output-control .output-sizer
 {
     position: absolute;

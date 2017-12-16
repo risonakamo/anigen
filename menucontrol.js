@@ -130,7 +130,24 @@ class _menuControl
             {
                 this.outputZone.innerHTML="";
 
-                chartShot();
+                this.showboxZone.parentElement.scrollTop=0;
+                this.showboxZone.parentElement.scrollLeft=0;
+
+                html2canvas(this.showboxZone,{
+                    allowTaint:true
+                }).then((c)=>{
+                    this.outputZone.appendChild(c);
+
+                    if (c.width>c.height)
+                    {
+                        c.classList.add("tall");
+                    }
+
+                    else
+                    {
+                        c.classList.remove("tall");
+                    }
+                });
             }
         });
     }
