@@ -1,10 +1,12 @@
 window.onload=main;
 
 var menucontrol;
+var currentColour;
 
 function main()
 {
     menucontrol=new _menuControl;
+    randomColour();
 }
 
 function loadData(username,year,season,language=0)
@@ -111,14 +113,14 @@ function genShowBox(data)
 
     //see showbox-string.html for expanded
     //returns [the html result,day index (starts from 0)]
-    return [`<div class="showbox"><a href="${data.siteUrl}"><img src="${data.coverImage.large}"></a><div class="text"><p class="title">${title}</p><p class="info genres">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
+    return [`<div class="showbox"><a href="${data.siteUrl}"><img src="${data.coverImage.large}"></a><div class="text"><p class="title">${title}</p><p class="info genres" style="color:${currentColour}">${genreString}</p><p class="info">${startDate.month}/${startDate.day}</p></div></div>`,
         new Date(startDate.year,startDate.month-1,startDate.day).getDay()];
 }
 
 //give it full showboxes html and actual day as a string
 function wrapdayBox(showboxesString,dayString)
 {
-    return `<div class="daybox"><div class="day-label">${dayString}</div>${showboxesString}</div>`;
+    return `<div class="daybox"><div class="day-label" style="color:${currentColour}">${dayString}</div>${showboxesString}</div>`;
 }
 
 //main gen function
@@ -153,14 +155,17 @@ function genShowBoxes(data,username,season,year)
 //its in a function so i can call it whenever i want
 function randomColour()
 {
-    changeColour("#"+new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex());
+    currentColour=changeColour("#"+new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex());
+    menucontrol.showboxZone.style.backgroundColor=currentColour;
 }
 
 //change colour theme to given colour
 function changeColour(colour)
 {
+    console.log(colour);
     document.styleSheets[0].rules[0].style.backgroundColor=colour;
     document.styleSheets[0].rules[1].style.color=colour;
+    return colour;
 }
 
 function randint(min,max)

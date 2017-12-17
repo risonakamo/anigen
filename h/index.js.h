@@ -1,3 +1,5 @@
+string currentColour;
+
 void main();
 
 void loadData(); //uses alistreq to do work
@@ -14,6 +16,6 @@ string wrapdayBox(string showboxesString,string dayString);
 void chartShot();
 
 void randomColour();
-void changeColour();
+void changeColour(string colour);
 
 int randint(int min,int max);
