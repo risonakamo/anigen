@@ -289,3 +289,37 @@ p
     max-width: 1000px;
     margin: auto;
 }
+
+.save-popup
+{
+    top: 322px;
+    left: 61px;
+    width: 165px;
+    background-color: white;
+    color: #594df6;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform .2s,opacity .2s;
+}
+
+.save-popup .arrow
+{
+    position: absolute;
+    top: -8px;
+    left: 83px;
+    width: 23px;
+    height: 10px;
+    background-color: white;
+    clip-path: polygon(0% 100%,50% 0%,100% 100%);
+}
+
+.save-popup.show
+{
+    transform: translateY(0px);
+    opacity: 1;
+}

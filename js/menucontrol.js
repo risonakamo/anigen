@@ -17,6 +17,7 @@ class _menuControl
         this.showboxZoneControl=block2.querySelector(".wide-control");
         this.showboxHeight=block2.querySelector(".height-control");
         this.outputZone=block2.querySelector(".output");
+        this.downloadMsg=block2.querySelector(".save-popup");
 
         this.defaultInputs();
         this.initButtons();
@@ -120,7 +121,37 @@ class _menuControl
                 controlValue-=20;
             }
 
+            if (controlValue<=600)
+            {
+                controlValue=600;
+            }
+
             this.showboxZoneControl.value=controlValue;
+            this.showboxZone.style.width=e.currentTarget.value+"px";
+            this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
+        });
+
+        //width control keyboard
+        this.showboxZoneControl.addEventListener("keydown",(e)=>{
+            if (e.key=="Enter")
+            {
+                if (e.currentTarget.value<=600)
+                {
+                    e.currentTarget.value=600;
+                }
+
+                this.showboxZone.style.width=e.currentTarget.value+"px";
+                this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
+            }
+        });
+
+        //defocus width control
+        this.showboxZoneControl.addEventListener("blur",(e)=>{
+            if (e.currentTarget.value<=600)
+            {
+                e.currentTarget.value=600;
+            }
+
             this.showboxZone.style.width=e.currentTarget.value+"px";
             this.showboxHeight.innerHTML=this.showboxZone.offsetHeight+"px";
         });
@@ -148,6 +179,8 @@ class _menuControl
                     {
                         c.classList.remove("tall");
                     }
+
+                    this.downloadMsg.classList.add("show");
                 });
             }
         });
