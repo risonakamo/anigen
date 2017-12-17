@@ -301,6 +301,7 @@ p
     padding: 10px;
     border-radius: 12px;
     text-align: center;
+    cursor: default;
 
     transform: translateY(-10px);
     opacity: 0;
