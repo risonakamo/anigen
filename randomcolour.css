@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+body,.showboxes
+{
+    background-color: #594df6;
+}
+
+.day-label,.white-textbox,.season-pick span.selected,
+.season-pick span.selected:hover,.submit,.save-popup,
+.showbox .genres span
+{
+    color: #594df6;
+}
