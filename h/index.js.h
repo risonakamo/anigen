@@ -12,3 +12,8 @@ void genShowBoxes([showObject,..] data);
 string wrapdayBox(string showboxesString,string dayString);
 
 void chartShot();
+
+void randomColour();
+void changeColour();
+
+int randint(int min,int max);

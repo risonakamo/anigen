@@ -149,3 +149,21 @@ function genShowBoxes(data,username,season,year)
         }
     }
 }
+
+//its in a function so i can call it whenever i want
+function randomColour()
+{
+    changeColour("#"+new tinycolor(`hsv(${randint(0,359)},${randint(40,100)},${randint(70,90)})`).toHex());
+}
+
+//change colour theme to given colour
+function changeColour(colour)
+{
+    document.styleSheets[0].rules[0].style.backgroundColor=colour;
+    document.styleSheets[0].rules[1].style.color=colour;
+}
+
+function randint(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
