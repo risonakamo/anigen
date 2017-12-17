@@ -22,7 +22,7 @@ function loadData(username,year,season,language=0)
     alistReq(`{MediaListCollection(userName:"${username}",type:ANIME){statusLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format,siteUrl}},customLists{media{title{${language}},startDate{year,month,day},season,coverImage{large},genres,format,siteUrl}}}}`,
     (d)=>{
         var data=seasonYearFilter(d,year,season,language);
-        genShowBoxes(data);
+        genShowBoxes(data,username,season,year);
         menucontrol.getZoneWide();
     });
 }
@@ -123,14 +123,17 @@ function wrapdayBox(showboxesString,dayString)
 
 //main gen function
 //give it array of show objects
-function genShowBoxes(data)
+function genShowBoxes(data,username,season,year)
 {
     var dayString=["日","月","火","水","木","金","土"];
     var days=["","","","","","",""];
     var daybox;
+    season={FALL:"秋",WINTER:"冬",SUMMER:"夏",SPRING:"春"}[season];
 
     var e_showboxes=document.querySelector(".showboxes");
-    e_showboxes.innerHTML="";
+
+    //showbox starts with logobox, see logobox.html
+    e_showboxes.innerHTML=`<div class="logobox"><img src="ag-logo.png"><div class="text-side"><div class="chart-info"><span class="season">${season}</span>${year}アニメ</div><div class="user">【${username}】</div></div></div>`;
 
     for (var x=0,l=data.length;x<l;x++)
     {

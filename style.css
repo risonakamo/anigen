@@ -323,3 +323,36 @@ p
     transform: translateY(0px);
     opacity: 1;
 }
+
+.logobox
+{
+    height: 70px;
+}
+
+.logobox .text-side
+{
+    display: inline-block;
+    vertical-align: top;
+    height: 70px;
+    padding-left: 5px;
+    margin-top: -1px;
+}
+
+.logobox .text-side .chart-info
+{
+    font-family: "nscj-bold";
+    font-size: 32px;
+}
+
+.chart-info .season
+{
+    color: #f5e30d;
+}
+
+.logobox .text-side .user
+{
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    margin-top: -3px;
+    padding-left: 7px;
+}
